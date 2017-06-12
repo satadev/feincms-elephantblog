@@ -1,5 +1,6 @@
+----
 
-This is a basic fork of the **feincms-elephantblog** plugin (https://github.com/feincms/feincms-elephantblog).  It has been modified to work with **django-taggit** (https://github.com/alex/django-taggit) and **django-taggit-labels** (https://github.com/bennylope/django-taggit-labels
+This is a basic fork of the **feincms-elephantblog** plugin (https://github.com/feincms/feincms-elephantblog).  It has been modified to work with **django-taggit** (https://github.com/alex/django-taggit) and **django-taggit-labels** (https://github.com/bennylope/django-taggit-labels)
 
 The modifications are very simple and can be reviewed by exploring the git log.  Django-taggit already exists as a functional extension and can be enabled by adding `Entry.register_extensions('elephantblog.extensions.tags')` to the models.py.
 
