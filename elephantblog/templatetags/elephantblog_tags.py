@@ -8,6 +8,7 @@ from django.utils.translation import get_language
 
 from elephantblog.models import Category, Entry
 from elephantblog.utils import entry_list_lookup_related
+from taggit.models import Tag
 
 
 register = template.Library()
@@ -131,3 +132,10 @@ def elephantblog_authors():
     return get_user_model().objects.filter(
         id__in=Entry.objects.active().order_by().values('author'),
     )
+
+
+@assignment_tag
+def elephantblog_tags(show_empty_tags=False):
+    if show_empty_tags:
+        return Tag.objects.all()
+    return Tag.objects.exclude(taggit_taggeditem_items__isnull=True)

@@ -15,6 +15,8 @@ from feincms.module.mixins import ContentModelMixin
 from feincms.utils.managers import ActiveAwareContentManagerMixin
 from feincms.utils.queryset_transform import TransformManager
 
+from taggit.managers import TaggableManager
+
 
 @python_2_unicode_compatible
 class Category(models.Model, translations.TranslatedObjectMixin):
@@ -114,6 +116,8 @@ class Entry(Base, ContentModelMixin):
         related_name='blogentries', blank=True)
 
     objects = EntryManager()
+
+    tags = TaggableManager()
 
     class Meta:
         get_latest_by = 'published_on'

@@ -10,6 +10,7 @@ from django.utils.translation import get_language
 from django.views.generic import dates
 
 from feincms.module.mixins import ContentObjectMixin
+from taggit.models import Tag
 
 from elephantblog.models import Category, Entry
 from elephantblog.utils import entry_list_lookup_related
@@ -224,4 +225,22 @@ class AuthorArchiveIndexView(ArchiveIndexView):
     def get_context_data(self, **kwargs):
         return super(AuthorArchiveIndexView, self).get_context_data(
             author=self.author,
+            **kwargs)
+
+
+class TagArchiveIndexView(ArchiveIndexView):
+    template_name_suffix = '_archive'
+
+    def get_queryset(self):
+        self.tag = get_object_or_404(
+            Tag,
+            pk=self.kwargs['pk'],
+        )
+        return super(TagArchiveIndexView, self).get_queryset().filter(
+            tags__in=[self.tag],
+        )
+
+    def get_context_data(self, **kwargs):
+        return super(TagArchiveIndexView, self).get_context_data(
+            tag=self.tag,
             **kwargs)
