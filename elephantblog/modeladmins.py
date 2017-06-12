@@ -62,7 +62,7 @@ class EntryAdmin(item_editor.ItemEditor):
                 ('title', 'slug'),
                 'author',
                 ('is_active', 'is_featured', ),
-                'tags',
+                # 'tags',
             ]
         }],
         [_('Other options'), {
