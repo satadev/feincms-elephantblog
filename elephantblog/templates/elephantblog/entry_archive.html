@@ -32,8 +32,8 @@
             </span>
         </header>
         <div class="entry-summary">
-            {% if entry.first_image %}{{ entry.first_image.render }}{% endif %}
-            {% if entry.first_richtext %}{{ entry.first_richtext.render }}{% endif %}
+            {% if entry.mediafilecontent_set.first %}{{ entry.mediafilecontent_set.first.render }{% endif %}
+            {% if entry.richtextcontent_set.first %}{{ entry.richtextcontent_set.first.render }}{% endif %}
         </div>
     </article>
 {% endfor %}
